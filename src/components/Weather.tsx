@@ -1,12 +1,23 @@
 import style from '../styles/weather.module.scss'
+import { useFetchWithInterval } from '../hooks/useFetchWithInterval'
+import React, { ReactElement, useState } from 'react'
+
+const _3hours = 10_800_000
+
+const weatherUrl = process.env.REACT_APP_WEATHER_URL ?? '/weather'
 
 
+const Weather: React.FC = (): ReactElement => {
+
+  const [intervalTime] = useState<number>(_3hours)
+  const { error, loading, data: weather } = useFetchWithInterval(weatherUrl, intervalTime)
+
+  const formatDate = (date: number): string => new Date(date * 1000).toLocaleString("sv-SV").split(" ")[1]
 
 
-export default function Weather(){
   return (
     <section className={style.weather}>
-    {/* <h2>Väder för {weather?.name}</h2>
+    <h2>Väder för {weather?.name}</h2>
     {error && <p>Error hallå</p>}
     {loading && <p>Loading...</p>}
     {weather && <article>
@@ -28,7 +39,10 @@ export default function Weather(){
           <p>Solnedgång: {formatDate(weather?.sys?.sunset)}</p>
         </span>
       </div>
-    </article>} */}
+    </article>}
   </section>
   )
 }
+
+
+export default Weather

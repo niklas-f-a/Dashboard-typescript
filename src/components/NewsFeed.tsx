@@ -2,18 +2,17 @@ import style from '../styles/news.module.scss'
 import NewsArticle from './NewsArticle'
 import { v4 as uuidv4 } from 'uuid'
 import { useFetchWithInterval } from '../hooks/useFetchWithInterval'
-import { useEffect, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 
 
 const _1HOUR = 3_600_000
 const _1MINUTE = 60_000
 
-// const newsUrl = process.env.REACT_APP_NEWS_URL
-const newsUrl = '/news'
+const newsUrl = process.env.REACT_APP_NEWS_URL ?? '/news'
 
 
 
-export default function NewsFeed(){
+const NewsFeed: React.FC = (): ReactElement => {
 
   const { loading, error, data: news } = useFetchWithInterval(newsUrl, _1HOUR)
   const [shuffledArticles, setShuffledArticles] = useState([])
@@ -44,3 +43,5 @@ export default function NewsFeed(){
     </section>
   )
 }
+
+export default NewsFeed

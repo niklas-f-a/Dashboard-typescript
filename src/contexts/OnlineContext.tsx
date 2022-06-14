@@ -1,7 +1,12 @@
 import { createContext, useState, useEffect } from 'react'
 
 
-const OnlineContext = createContext<Boolean | null>(null)
+type OnlineContextType = {
+  online: boolean
+  setOnline: (online: boolean) => void
+}
+
+const OnlineContext = createContext<OnlineContextType | null>(null)
 
 interface Props{
   children: React.ReactNode
@@ -9,7 +14,7 @@ interface Props{
 
 function OnlineContextProvider({children}: Props){
 
-  const [online, setOnline] = useState<Boolean>(navigator.onLine ? true : false)
+  const [online, setOnline] = useState(navigator.onLine ? true : false)
 
   const setOnlineTrue = (): void => {
     setOnline(true)
@@ -32,7 +37,7 @@ function OnlineContextProvider({children}: Props){
 
 
   return (
-    <OnlineContext.Provider value={online}>
+    <OnlineContext.Provider value={{online, setOnline}}>
       {children}
     </OnlineContext.Provider>
 

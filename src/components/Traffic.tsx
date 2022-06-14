@@ -1,11 +1,26 @@
+import React, { useState, useContext, ReactElement } from 'react'
+import { useFetchWithInterval } from '../hooks/useFetchWithInterval'
 import style from '../styles/traffic.module.scss'
+import Sign from './Sign'
+import { v4 as uuidv4 } from 'uuid'
+import { OnlineContext } from '../contexts/OnlineContext'
+import OfflineAlert from './OfflineAlert'
+
+const _1Minute = 60_000
+
+const departuresUrl = process.env.REACT_APP_DEPARTURES_URL ?? '/departures'
 
 
+const Traffic: React.FC = (): ReactElement => {
 
-export default function Traffic(){
+  const [intervalTime] = useState(_1Minute)
+  const  onlineContext  = useContext(OnlineContext)
+  const { data: traffic, error, loading } = useFetchWithInterval(departuresUrl, intervalTime)
+
+
   return (
     <>
-      {/* {!online
+      {!onlineContext?.online
         ? <OfflineAlert />
         : <section className={style.traffic}>
         <div className={style.left}>
@@ -14,7 +29,7 @@ export default function Traffic(){
             {error && <p>{error.message}</p>}
             <div className={style.departures}>
               {loading && <p>Loading...</p>}
-              {traffic?.ResponseData?.Buses && !loading && !loading && traffic.ResponseData.Buses.splice(0, 3).map(bus => <Sign vehicle={bus} key={uuidv4()} />)}
+              {traffic?.ResponseData?.Buses && traffic.ResponseData.Buses.splice(0, 3).map((bus: any) => <Sign vehicle={bus} key={uuidv4()} />)}
             </div>
           </article>
           <article className={style.bottomLeft}>
@@ -22,7 +37,7 @@ export default function Traffic(){
             {error && <h1>{error.message}</h1>}
             <div className={style.departures}>
               {loading && <p>Loading...</p>}
-              {traffic?.ResponseData?.Metros && !loading && traffic?.ResponseData?.Metros.splice(0, 3).map(metro => <Sign vehicle={metro} key={uuidv4()} />)}
+              {traffic?.ResponseData?.Metros && !loading && traffic?.ResponseData?.Metros.splice(0, 3).map((metro: any) => <Sign vehicle={metro} key={uuidv4()} />)}
             </div>
           </article>
         </div>
@@ -31,11 +46,13 @@ export default function Traffic(){
           {error && <h1>{error.message}</h1>}
           <article>
             {loading && <p>Loading...</p>}
-            {traffic?.ResponseData?.Trams && !loading && traffic?.ResponseData?.Trams.splice(0, 2).map(tram => <Sign vehicle={tram} key={uuidv4()} />)}
+            {traffic?.ResponseData?.Trams && !loading && traffic?.ResponseData?.Trams.splice(0, 2).map((tram: any) => <Sign vehicle={tram} key={uuidv4()} />)}
           </article>
         </div>
       </section>
-      } */}
+      }
     </>
   )
 }
+
+export default Traffic

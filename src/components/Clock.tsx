@@ -1,10 +1,10 @@
 import styles from '../styles/clock.module.scss'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, ReactElement } from 'react'
 
 const HOURS: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 
-export default function Clock(){
+const Clock: React.FC = (): ReactElement => {
 
   const [today, setToday] = useState(new Date())
 
@@ -47,3 +47,5 @@ export default function Clock(){
     </section>
   )
 }
+
+export default Clock

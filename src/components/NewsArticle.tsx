@@ -1,3 +1,4 @@
+import { ReactElement } from "react"
 
 interface Props{
   news: {
@@ -7,7 +8,7 @@ interface Props{
   }
 }
 
-export default function NewsArticle({news}: Props){
+const NewsArticle = ({news}: Props): ReactElement => {
   return (
     <article>
       <h4>{news.title}</h4>
@@ -16,3 +17,5 @@ export default function NewsArticle({news}: Props){
     </article>
   )
 }
+
+export default NewsArticle
