@@ -15,8 +15,8 @@ const Layout: React.FC = () => {
     <main>
       <Traffic />
       <Clock />
-      {/* <Weather /> */}
-      {/* <NewsFeed /> */}
+      <Weather />
+      <NewsFeed />
       <RandomExcuse />
     </main>
   )
