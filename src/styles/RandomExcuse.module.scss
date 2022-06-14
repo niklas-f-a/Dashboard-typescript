@@ -1,0 +1,15 @@
+@import './App.scss';
+
+.excuse{
+  grid-area: excuse;
+  border: 1px solid $primary;
+  border-radius: 8px;
+  overflow: hidden;
+  h2{
+    background-color: $primary;
+    padding: .3rem 0 .3rem 1.5rem;
+  }
+  article{
+    padding: 1rem;
+  }
+}

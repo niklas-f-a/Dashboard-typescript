@@ -1,0 +1,23 @@
+main{
+  background-color: #FFF;
+  display: grid;
+  height: 90%;
+  width: 90%;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 18rem auto auto;
+  grid-template-areas: "traffic traffic traffic traffic traffic clock"
+                        "news news news weather weather weather"
+                        "news news news excuse excuse excuse";
+  gap: .5rem;
+
+}
+
+
+@media(max-width: 650px){
+  main{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100vw;
+  }
+}
