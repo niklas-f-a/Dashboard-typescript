@@ -1,4 +1,4 @@
-const {
+import {
   SL_REAL_TIME_API_KEY,
   SL_SITE_ID,
   WEATHER_KEY,
@@ -9,14 +9,16 @@ const {
   NEWS_API_BASE_URL,
   NEWS_API_LANG,
   WEATHER_UNITS
-} = require('../config')
+} from '../config'
 
 
-const { LONG, LAT } = require('../constants')
+import { LONG, LAT } from '../constants'
 
-const path = require('path')
-const axios = require('axios')
-const router = require('express').Router()
+import path from 'path'
+import axios from 'axios'
+import { Router } from 'express'
+
+const router = Router()
 
 
 router.get('/departures', (req, res) => {
@@ -44,4 +46,4 @@ router.get('/', (req, res) => {
 })
 
 
-module.exports = router
+export = router

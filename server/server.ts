@@ -1,10 +1,10 @@
-const { PORT } = require('./config')
-const router = require('./router')
-const express = require('express')
-const cors = require('cors')
-const https = require('https')
-const path = require('path')
-const fs = require('fs')
+import { PORT } from './config/index'
+import router from './router'
+import express from 'express'
+import cors from 'cors'
+import https from 'https'
+import path from 'path'
+import fs from 'fs'
 
 const app = express()
 
@@ -21,4 +21,4 @@ const keys = {
 
 
 const port = PORT || 5001
-https.createServer(keys, app).listen(port, console.log(`Running on port ${port}`))
+https.createServer(keys, app).listen(port, () => console.log(`Running on port ${port}`))
