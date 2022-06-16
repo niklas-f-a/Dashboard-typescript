@@ -8,7 +8,7 @@ import React, { ReactElement, useEffect, useState } from 'react'
 const _1HOUR = 3_600_000
 const _1MINUTE = 60_000
 
-const newsUrl = process.env.REACT_APP_NEWS_URL ?? '/news'
+const newsUrl = '/news'
 
 
 
@@ -24,7 +24,6 @@ const NewsFeed: React.FC = (): ReactElement => {
 
   useEffect(() => {
     if(!news?.results) return
-    console.log(news);
 
     shuffleNews()
     setInterval(shuffleNews, _1MINUTE)

@@ -1,17 +1,17 @@
 import { ReactElement } from "react"
-
-interface Props{
-  news: {
-    title: string
-    description: string
-    source_id: string
-  }
+interface News{
+  title: string
+  description: string
+  source_id: string
+}
+interface NewsArticleProps{
+  news: News
 }
 
-const NewsArticle = ({news}: Props): ReactElement => {
+const NewsArticle = ({news}: NewsArticleProps): ReactElement => {
   return (
     <article>
-      <h4>{news.title}</h4>
+      <h4>{news.description}</h4>
       <p>{news.description}</p>
       <small>{news.source_id}</small>
     </article>

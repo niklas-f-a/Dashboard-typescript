@@ -4,7 +4,7 @@ import React, { ReactElement, useState } from 'react'
 
 const _3hours = 10_800_000
 
-const weatherUrl = process.env.REACT_APP_WEATHER_URL ?? '/weather'
+const weatherUrl = '/weather'
 
 
 const Weather: React.FC = (): ReactElement => {

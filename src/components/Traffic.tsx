@@ -8,7 +8,7 @@ import OfflineAlert from './OfflineAlert'
 
 const _1Minute = 60_000
 
-const departuresUrl = process.env.REACT_APP_DEPARTURES_URL ?? '/departures'
+const departuresUrl = '/departures'
 
 
 const Traffic: React.FC = (): ReactElement => {
@@ -29,7 +29,7 @@ const Traffic: React.FC = (): ReactElement => {
             {error && <p>{error.message}</p>}
             <div className={style.departures}>
               {loading && <p>Loading...</p>}
-              {traffic?.ResponseData?.Buses && traffic.ResponseData.Buses.splice(0, 3).map((bus: any) => <Sign vehicle={bus} key={uuidv4()} />)}
+              {traffic?.Buses && traffic.Buses.splice(0, 3).map((bus: any) => <Sign vehicle={bus} key={uuidv4()} />)}
             </div>
           </article>
           <article className={style.bottomLeft}>
@@ -37,7 +37,7 @@ const Traffic: React.FC = (): ReactElement => {
             {error && <h1>{error.message}</h1>}
             <div className={style.departures}>
               {loading && <p>Loading...</p>}
-              {traffic?.ResponseData?.Metros && !loading && traffic?.ResponseData?.Metros.splice(0, 3).map((metro: any) => <Sign vehicle={metro} key={uuidv4()} />)}
+              {traffic?.Metros && !loading && traffic?.Metros.splice(0, 3).map((metro: any) => <Sign vehicle={metro} key={uuidv4()} />)}
             </div>
           </article>
         </div>

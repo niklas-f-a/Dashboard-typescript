@@ -11,7 +11,6 @@ interface Props{
 
 
 const Sign = ({vehicle}: Props): ReactElement  => {
-  console.log(vehicle);
 
   return (
     <div className={style.sign}>

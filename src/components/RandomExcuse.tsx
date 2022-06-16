@@ -6,7 +6,7 @@ import React, { ReactElement } from 'react'
 
 const _30s = 30_000
 
-const excuseUrl = process.env.REACT_APP_EXCUSE_URL ?? '/excuse'
+const excuseUrl = '/excuse'
 
 
 const RandomExcuse: React.FC = (): ReactElement => {
