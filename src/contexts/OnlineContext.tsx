@@ -1,12 +1,13 @@
 import { createContext, useState, useEffect } from 'react'
 
+type Online = true | false
 
 type OnlineContextType = {
-  online: boolean
-  setOnline: (online: boolean) => void
+  online: Online
+  setOnline: (Online: Online) => void
 }
 
-const OnlineContext = createContext<OnlineContextType | null>(null)
+const OnlineContext = createContext<OnlineContextType>({online: navigator.onLine ? true : false, setOnline: online => console.log(online)})
 
 interface Props{
   children: React.ReactNode

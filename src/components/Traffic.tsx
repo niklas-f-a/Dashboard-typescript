@@ -14,13 +14,13 @@ const departuresUrl = '/departures'
 const Traffic: React.FC = (): ReactElement => {
 
   const [intervalTime] = useState(_1Minute)
-  const  onlineContext  = useContext(OnlineContext)
+  const  { online }  = useContext(OnlineContext)
   const { data: traffic, error, loading } = useFetchWithInterval(departuresUrl, intervalTime)
 
 
   return (
     <>
-      {!onlineContext?.online
+      {!online
         ? <OfflineAlert />
         : <section className={style.traffic}>
         <div className={style.left}>
